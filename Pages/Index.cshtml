@@ -3,7 +3,8 @@
 @{    
     ViewData["Title"] = "Home page";
 }
-
+<!DOCTYPE html>
+<html>
 <div class="text-center">
     <h1 class="display-4">Hello World from .NET 7</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -11,3 +12,63 @@
     <hr />
     <div>Host operating system: @Model.OSVersion</div>
 </div>
+
+<head>
+	<title>My Web Application</title>
+</head>
+<body>
+	<header>
+		<h1>Welcome to My Web Application</h1>
+	</header>
+	
+	<main>
+		<section>
+			<h2>Calculator</h2>
+			<form>
+				<label for="num1">Number 1:</label>
+				<input type="number" id="num1" name="num1" required>
+				<label for="num2">Number 2:</label>
+				<input type="number" id="num2" name="num2" required>
+				<br>
+				<input type="radio" id="add" name="operation" value="add" checked>
+				<label for="add">Addition</label>
+				<input type="radio" id="sub" name="operation" value="sub">
+				<label for="sub">Subtraction</label>
+				<input type="radio" id="mul" name="operation" value="mul">
+				<label for="mul">Multiplication</label>
+				<input type="radio" id="div" name="operation" value="div">
+				<label for="div">Division</label>
+				<br><br>
+				<button type="button" onclick="calculate()">Calculate</button>
+			</form>
+			<p id="result"></p>
+		</section>
+	</main>
+	
+	<script>
+		function calculate() {
+			var num1 = parseFloat(document.getElementById("num1").value);
+			var num2 = parseFloat(document.getElementById("num2").value);
+			var operation = document.querySelector('input[name="operation"]:checked').value;
+			var result;
+			
+			switch(operation) {
+				case "add":
+					result = num1 + num2;
+					break;
+				case "sub":
+					result = num1 - num2;
+					break;
+				case "mul":
+					result = num1 * num2;
+					break;
+				case "div":
+					result = num1 / num2;
+					break;
+			}
+			
+			document.getElementById("result").innerHTML = "Result: " + result;
+		}
+	</script>
+</body>
+</html>
